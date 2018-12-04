@@ -1,0 +1,13 @@
+    
+<div class="splitleft">
+</div>
+
+<div class="splitright">
+	<i class="fa"></i>
+    <div>
+        <x-map #xmap [Options]="_options" [Box]="_box">
+          <x-map-polygon [Paths]="_path" [Title]="'My Polygon'" (PathChanged)="_changed($event)" [Editable]="_editable" (Click)="_click($event)" (DblClick)="_edit()"></x-map-polygon>
+        </x-map>
+    </div>
+</div>
+ 
