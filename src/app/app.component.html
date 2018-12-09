@@ -7,7 +7,7 @@
 
 <div class="splitright">
     <div>
-        <x-map #xmap [Options]="_options" [Box]="_box" (click)="_getMapClick(this)">
+        <x-map #xmap [Options]="_options" [Box]="_box" (click)="_getMapClick($event)">
           <x-map-polygon [Paths]="_myPolygons" (PathChanged)="_changed($event)" 
 						 [Editable]="_editable" (Click)="_click()" (DblClick)="_edit()">
 		  </x-map-polygon>

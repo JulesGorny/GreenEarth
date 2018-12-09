@@ -61,13 +61,13 @@ export class MapCreator
 	console.log('test2');
   }
   
-  _getMapClick($event)
+  _getMapClick(ev)
   {
 	console.log('test3');
 	if(this._editingPolygon)
 	{
-		this._myPolygons[this._myPolygons.length-1].push({ 'latitude': $event.coords.lat, 'longitude': $event.coords.lng });
-		console.log(this._myPolygons.length);
+		this._myPolygons[this._myPolygons.length-1].push(ev.coords);
+		console.log("nb polygons : " + this._myPolygons.length + " nb points of last one : " + this._myPolygons[this._myPolygons.length-1].length);
 	}
   }
   
