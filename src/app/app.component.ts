@@ -66,12 +66,12 @@ export class MapCreator
 	console.log('test3');
 	if(this._editingPolygon)
 	{
-		this._myPolygons[this._myPolygons.length-1].push(ev.coords);
+		console.log("last points : " + ev.coords.lat + " " + ev.coords.lng);
+		this._myPolygons[this._myPolygons.length-1].push({ latitude: ev.coords.lat, longitude: ev.coords.lng});
 		var nbElemsLastPoly = this._myPolygons[this._myPolygons.length-1].length;
 		var nbPoly = this._myPolygons.length;
 		console.log("nb polygons : " + nbPoly + " nb points of last one : " + nbElemsLastPoly);
 		console.log(this._myPolygons[0][0].latitude + " " + this._myPolygons[0][0].longitude);
-		console.log("last points : " + this._myPolygons[nbPoly-1][nbElemsLastPoly-1].latitude + " " + this._myPolygons[nbPoly-1][nbElemsLastPoly-1].longitude);
 	}
   }
   
