@@ -67,7 +67,11 @@ export class MapCreator
 	if(this._editingPolygon)
 	{
 		this._myPolygons[this._myPolygons.length-1].push(ev.coords);
-		console.log("nb polygons : " + this._myPolygons.length + " nb points of last one : " + this._myPolygons[this._myPolygons.length-1].length);
+		var nbElemsLastPoly = this._myPolygons[this._myPolygons.length-1].length;
+		var nbPoly = this._myPolygons.length;
+		console.log("nb polygons : " + nbPoly + " nb points of last one : " + nbElemsLastPoly);
+		console.log(this._myPolygons[0][0].latitude + " " + this._myPolygons[0][0].longitude);
+		console.log("last points : " + this._myPolygons[nbPoly-1][nbElemsLastPoly-1].latitude + " " + this._myPolygons[nbPoly-1][nbElemsLastPoly-1].longitude);
 	}
   }
   
