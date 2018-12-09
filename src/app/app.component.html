@@ -1,12 +1,16 @@
     
 <div class="splitleft">
+	<button (click)="setEditingPolygonMode()">
+		Create polygon
+	</button>
 </div>
 
 <div class="splitright">
-	<i class="fa"></i>
     <div>
-        <x-map #xmap [Options]="_options" [Box]="_box">
-          <x-map-polygon [Paths]="_path" [Title]="'My Polygon'" (PathChanged)="_changed($event)" [Editable]="_editable" (Click)="_click($event)" (DblClick)="_edit()"></x-map-polygon>
+        <x-map #xmap [Options]="_options" [Box]="_box" (click)="_click()">
+          <x-map-polygon [Paths]="_myPolygons" (PathChanged)="_changed($event)" 
+						 [Editable]="_editable" (Click)="_getMapClick($event)" (DblClick)="_edit()">
+		  </x-map-polygon>
         </x-map>
     </div>
 </div>

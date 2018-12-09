@@ -14,7 +14,10 @@ let PathData: Array<any> = null;
   styleUrls: [ './app.component.css' ]
 })
 
-export class App {
+export class MapCreator 
+{
+  _editingPolygon = false;
+  
   _editable = false;
   _options: IMapOptions = {
     disableBirdseye: false,
@@ -29,20 +32,43 @@ export class App {
     minLatitude: 24,
     minLongitude: -95
   };
-  private _path: Array<ILatLong> = new Array<ILatLong>()
+  
+  private _path: Array<ILatLong> = new Array<ILatLong>();
+  private _myPolygons: Array<Array<ILatLong>> = new Array<Array<ILatLong>>();
     
-  constructor() {
+  constructor() 
+  {  
     let n = 0;
+	this._myPolygons.push(new Array<ILatLong>());
     PathData.forEach(element => {
       if(n % 10 === 0) {
-         this._path.push({ latitude: element.latitude, longitude: element.longitude});
+         this._myPolygons[this._myPolygons.length-1].push({ latitude: element.latitude, longitude: element.longitude});
       }
       n++;
     });
   }
   
-  _click(){
-     console.log("Green Earth");
+  setEditingPolygonMode()
+  {
+	  this._editingPolygon = !this._editingPolygon;
+	  if(this._editingPolygon == true)
+		this._myPolygons.push(new Array<ILatLong>());
+	console.log(this._editingPolygon);
+  }
+  
+  _click()
+  { 
+	console.log('test2');
+  }
+  
+  _getMapClick($event)
+  {
+	console.log('test3');
+	if(this._editingPolygon)
+	{
+		this._myPolygons[this._myPolygons.length-1].push({ 'latitude': $event.coords.lat, 'longitude': $event.coords.lng });
+		console.log(this._myPolygons.length);
+	}
   }
   
   _edit() {

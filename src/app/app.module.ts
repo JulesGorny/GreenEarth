@@ -5,7 +5,7 @@ import {MapModule, MapAPILoader, MarkerTypeId, IMapOptions, IBox, IMarkerIconInf
         BingMapAPILoaderConfig, BingMapAPILoader, 
         GoogleMapAPILoader,  GoogleMapAPILoaderConfig
 } from 'angular-maps';
-import { App } from './app.component';
+import { MapCreator } from './app.component';
 
 const useBing = false;
 
@@ -14,13 +14,13 @@ const useBing = false;
     BrowserModule,
     useBing ? MapModule.forRootBing() : MapModule.forRootGoogle()
   ],
-  declarations: [ App ],
+  declarations: [ MapCreator ],
   providers: [
     { 
       provide: MapAPILoader, deps: [], useFactory: useBing ? BingMapServiceProviderFactory :  GoogleMapServiceProviderFactory
     }
   ],
-  bootstrap: [ App ]
+  bootstrap: [ MapCreator ]
 })
 export class AppModule {}
 
